@@ -1,0 +1,31 @@
+{
+  "name": "intervalue-headless",
+  "description": "InterValue headless wallet",
+  "author": "InterValue",
+  "version": "1.0.0",
+  "main": "start.js",
+  "keywords": [
+    "wallet",
+    "headless",
+    "intervalue",
+    "full node"
+  ],
+  "license": "MIT",
+  "repository": {
+    "url": "git://github.com/intervalue/intervalue-headless.git",
+    "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/intervalue/intervalue-headless/issues"
+  },
+  "browser": {
+    "request": "browser-request",
+    "secp256k1": "secp256k1/js"
+  },
+  "dependencies": {
+    "intervaluecore": "git+https://github.com/intervalue/intervaluecore.git",
+    "bitcore-lib": "^0.13.14",
+    "bitcore-mnemonic": "~1.0.0",
+    "json-rpc2": "^1.0.2"
+  }
+}
