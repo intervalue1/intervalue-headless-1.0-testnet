@@ -1,8 +1,8 @@
 {
   "name": "intervalue-headless",
-  "description": "InterValue headless wallet",
+  "description": "InterValue headless wallet 1.0 testnet",
   "author": "InterValue",
-  "version": "1.0-testnet",
+  "version": "1.0.0",
   "main": "start.js",
   "keywords": [
     "wallet",
