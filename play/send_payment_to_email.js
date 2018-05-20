@@ -1,9 +1,9 @@
 /*jslint node: true */
 "use strict";
 var headlessWallet = require('../start.js');
-var eventBus = require('intervlauecore-1.0-testnet/event_bus.js');
-var mail = require('intervlauecore-1.0-testnet/mail.js');
-var conf = require('intervlauecore-1.0-testnet/conf.js');
+var eventBus = require('intervaluecore-1.0-testnet/event_bus.js');
+var mail = require('intervaluecore-1.0-testnet/mail.js');
+var conf = require('intervaluecore-1.0-testnet/conf.js');
 
 const asset = null;
 const amount = 1000;
