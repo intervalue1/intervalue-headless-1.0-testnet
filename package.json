@@ -12,18 +12,18 @@
   ],
   "license": "MIT",
   "repository": {
-    "url": "git://github.com/intervalue/intervalue-headless.git",
+    "url": "git://github.com/intervalue/intervalue-headless-1.0-testnet.git",
     "type": "git"
   },
   "bugs": {
-    "url": "https://github.com/intervalue/intervalue-headless/issues"
+    "url": "https://github.com/intervalue/intervalue-headless-1.0-testnet/issues"
   },
   "browser": {
     "request": "browser-request",
     "secp256k1": "secp256k1/js"
   },
   "dependencies": {
-    "intervaluecore": "git+https://github.com/intervalue/intervaluecore.git",
+    "intervaluecore": "git+https://github.com/intervalue/intervaluecore-1.0-testnet.git",
     "bitcore-lib": "^0.13.14",
     "bitcore-mnemonic": "~1.0.0",
     "json-rpc2": "^1.0.2"

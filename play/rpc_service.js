@@ -3,7 +3,7 @@
 /*
 	Accept commands via JSON-RPC API.
 	The daemon listens on port 6332 by default.
-	See https://github.com/intervalue/intervalue-headless/wiki/Running-RPC-service for detailed description of the API
+	See https://github.com/intervalue/intervalue-headless-1.0-testnet/wiki/Running-RPC-service for detailed description of the API
 */
 
 "use strict";
