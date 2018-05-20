@@ -3,13 +3,13 @@
 var fs = require('fs');
 var crypto = require('crypto');
 var util = require('util');
-var constants = require('intervaluecore-1.0-testnet/constants.js');
-var conf = require('intervaluecore-1.0-testnet/conf.js');
-var objectHash = require('intervaluecore-1.0-testnet/object_hash.js');
-var desktopApp = require('intervaluecore-1.0-testnet/desktop_app.js');
-var db = require('intervaluecore-1.0-testnet/db.js');
-var eventBus = require('intervaluecore-1.0-testnet/event_bus.js');
-var ecdsaSig = require('intervaluecore-1.0-testnet/signature.js');
+var constants = require('intervaluecore/constants.js');
+var conf = require('intervaluecore/conf.js');
+var objectHash = require('intervaluecore/object_hash.js');
+var desktopApp = require('intervaluecore/desktop_app.js');
+var db = require('intervaluecore/db.js');
+var eventBus = require('intervaluecore/event_bus.js');
+var ecdsaSig = require('intervaluecore/signature.js');
 var Mnemonic = require('bitcore-mnemonic');
 var Bitcore = require('bitcore-lib');
 var readline = require('readline');
@@ -122,10 +122,10 @@ function writeKeys(mnemonic_phrase, deviceTempPrivKey, devicePrevTempPrivKey, on
 
 function createWallet(xPrivKey, onDone){
 	var devicePrivKey = xPrivKey.derive("m/1'").privateKey.bn.toBuffer({size:32});
-	var device = require('intervaluecore-1.0-testnet/device.js');
+	var device = require('intervaluecore/device.js');
 	device.setDevicePrivateKey(devicePrivKey); // we need device address before creating a wallet
 	var strXPubKey = Bitcore.HDPublicKey(xPrivKey.derive("m/44'/0'/0'")).toString();
-	var walletDefinedByKeys = require('intervaluecore-1.0-testnet/wallet_defined_by_keys.js');
+	var walletDefinedByKeys = require('intervaluecore/wallet_defined_by_keys.js');
 	// we pass isSingleAddress=false because this flag is meant to be forwarded to cosigners and headless wallet doesn't support multidevice
 	walletDefinedByKeys.createWalletByDevices(strXPubKey, 0, 1, [], 'any walletName', false, function(wallet_id){
 		walletDefinedByKeys.issueNextAddress(wallet_id, 0, function(addressInfo){
@@ -159,7 +159,7 @@ function readFirstAddress(handleAddress){
 }
 
 function prepareBalanceText(handleBalanceText){
-	var Wallet = require('intervaluecore-1.0-testnet/wallet.js');
+	var Wallet = require('intervaluecore/wallet.js');
 	Wallet.readBalance(wallet_id, function(assocBalances){
 		var arrLines = [];
 		for (var asset in assocBalances){
@@ -249,7 +249,7 @@ setTimeout(function(){
 		readSingleWallet(function(wallet){
 			// global
 			wallet_id = wallet;
-			var device = require('intervaluecore-1.0-testnet/device.js');
+			var device = require('intervaluecore/device.js');
 			device.setDevicePrivateKey(devicePrivKey);
 			let my_device_address = device.getMyDeviceAddress();
 			db.query("SELECT 1 FROM extended_pubkeys WHERE device_address=?", [my_device_address], function(rows){
@@ -260,7 +260,7 @@ setTimeout(function(){
 						console.log('passphrase is incorrect');
 						process.exit(0);
 					}, 1000);
-				require('intervaluecore-1.0-testnet/wallet.js'); // we don't need any of its functions but it listens for hub/* messages
+				require('intervaluecore/wallet.js'); // we don't need any of its functions but it listens for hub/* messages
 				device.setTempKeys(deviceTempPrivKey, devicePrevTempPrivKey, saveTempKeys);
 				device.setDeviceName(conf.deviceName);
 				device.setDeviceHub(conf.hub);
@@ -270,14 +270,14 @@ setTimeout(function(){
 				if (conf.permanent_pairing_secret)
 					console.log("====== my pairing code: "+my_device_pubkey+"@"+conf.hub+"#"+conf.permanent_pairing_secret);
 				if (conf.bLight){
-					var light_wallet = require('intervaluecore-1.0-testnet/light_wallet.js');
+					var light_wallet = require('intervaluecore/light_wallet.js');
 					light_wallet.setLightVendorHost(conf.hub);
 				}
 				eventBus.emit('headless_wallet_ready');
 				setTimeout(replaceConsoleLog, 1000);
 				if (conf.MAX_UNSPENT_OUTPUTS && conf.CONSOLIDATION_INTERVAL){
 					var consolidation = require('./consolidation.js');
-					var network = require('intervaluecore-1.0-testnet/network.js');
+					var network = require('intervaluecore/network.js');
 					function consolidate(){
 						if (!network.isCatchingUp())
 							consolidation.consolidate(wallet_id, signer);
@@ -293,14 +293,14 @@ setTimeout(function(){
 
 
 function handlePairing(from_address){
-	var device = require('intervaluecore-1.0-testnet/device.js');
+	var device = require('intervaluecore/device.js');
 	prepareBalanceText(function(balance_text){
 		device.sendMessageToDevice(from_address, 'text', balance_text);
 	});
 }
 
 function sendPayment(asset, amount, to_address, change_address, device_address, onDone){
-	var device = require('intervaluecore-1.0-testnet/device.js');
+	var device = require('intervaluecore/device.js');
 	var Wallet = require('intervaluecore/wallet.js');
 	Wallet.sendPaymentFromWallet(
 		asset, wallet_id, to_address, amount, change_address, 

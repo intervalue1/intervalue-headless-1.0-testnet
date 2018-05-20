@@ -1,9 +1,9 @@
 /*jslint node: true */
 "use strict";
-var constants = require('intervaluecore-1.0-testnet/constants.js');
-var conf = require('intervaluecore-1.0-testnet/conf.js');
-var db = require('intervaluecore-1.0-testnet/db.js');
-var eventBus = require('intervaluecore-1.0-testnet/event_bus.js');
+var constants = require('intervaluecore/constants.js');
+var conf = require('intervaluecore/conf.js');
+var db = require('intervaluecore/db.js');
+var eventBus = require('intervaluecore/event_bus.js');
 var headlessWallet = require('../start.js');
 
 
@@ -21,9 +21,9 @@ function work(){
 	function onError(err){
 		throw err;
 	}
-	var network = require('intervaluecore-1.0-testnet/network.js');
-	var walletGeneral = require('intervaluecore-1.0-testnet/wallet_general.js');
-	var composer = require('intervaluecore-1.0-testnet/composer.js');
+	var network = require('intervaluecore/network.js');
+	var walletGeneral = require('intervaluecore/wallet_general.js');
+	var composer = require('intervaluecore/composer.js');
 	createSplitOutputs(function(arrOutputs){
 		console.log(arrOutputs);
 	//	return unlock();

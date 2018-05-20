@@ -8,19 +8,19 @@ Install node.js, clone the repository, then say
 ```sh
 npm install
 ```
-If you want to accept incoming connections, you'll need to set up a proxy, such as nginx, to forward all websocket connections on a specific path to your daemon running this code.  See example configuration for nginx in [intervaluecore-1.0-testnet](../../../intervaluecore-1.0-testnet) documentation.
+If you want to accept incoming connections, you'll need to set up a proxy, such as nginx, to forward all websocket connections on a specific path to your daemon running this code.  See example configuration for nginx in [intervaluecore](../../../intervaluecore-1.0-testnet) documentation.
 
 ## Run
 ```sh
 node start.js
 ```
-The first time you run it, it will generate a new extended private key (BIP44) and ask you for a passphrase to encrypt it.  The BIP39 mnemonic will be saved to the file keys.json in the app data directory (see [intervaluecore-1.0-testnet](../../../intervaluecore-1.0-testnet) for its location), the passphrase is, of course, never saved.  Every time you start the wallet, you'll have to type the passphrase.  One implication of this is the wallet cannot be started automatically when your server restarts, you'll have to ssh the server and type the passphrase.
+The first time you run it, it will generate a new extended private key (BIP44) and ask you for a passphrase to encrypt it.  The BIP39 mnemonic will be saved to the file keys.json in the app data directory (see [intervaluecore](../../../intervaluecore-1.0-testnet) for its location), the passphrase is, of course, never saved.  Every time you start the wallet, you'll have to type the passphrase.  One implication of this is the wallet cannot be started automatically when your server restarts, you'll have to ssh the server and type the passphrase.
 
 After you enter the passphrase, the wallet redirects all output to a log file in your app data directory but it still holds the terminal window.  To release it, type Ctrl-Z, then bg to resume the wallet in the background.  After that, you can safely terminate the ssh session.
 
 ## Customize
 
-If you want to change any defaults, refer to the documentation of [intervaluecore-1.0-testnet](../../../intervaluecore-1.0-testnet), the core InterValue library `require()`'d from here.  Below are some headless wallet specific settings you might want to change:
+If you want to change any defaults, refer to the documentation of [intervaluecore](../../../intervaluecore-1.0-testnet), the core InterValue library `require()`'d from here.  Below are some headless wallet specific settings you might want to change:
 
 * `control_addresses`: array of device addresses of your other (likely GUI) wallets that can chat with the wallet and give commands.  To learn the device address of your GUI wallet, click menu button, then Global preferences, and look for 'Device address'.  If your `control_addresses` is empty array or contains a single address that is invalid (this is the default), then nobody can remotely control your wallet.
 * `payout_address`: if you give `pay` command over chat interface, the money will be sent to this InterValue address.

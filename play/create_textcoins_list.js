@@ -2,8 +2,8 @@
 "use strict";
 var fs = require('fs');
 var headlessWallet = require('../start.js');
-var eventBus = require('intervaluecore-1.0-testnet/event_bus.js');
-var constants = require('intervaluecore-1.0-testnet/constants.js');
+var eventBus = require('intervaluecore/event_bus.js');
+var constants = require('intervaluecore/constants.js');
 
 
 // edit these two constants

@@ -1,16 +1,16 @@
 /*jslint node: true */
 "use strict";
 var headlessWallet = require('../start.js');
-var eventBus = require('intervaluecore-1.0-testnet/event_bus.js');
+var eventBus = require('intervaluecore/event_bus.js');
 
 function onError(err){
 	throw Error(err);
 }
 
 function createDivisibleAssetPayment(){
-	var network = require('intervaluecore-1.0-testnet/network.js');
-	var divisibleAsset = require('intervaluecore-1.0-testnet/divisible_asset.js');
-	var walletGeneral = require('intervaluecore-1.0-testnet/wallet_general.js');
+	var network = require('intervaluecore/network.js');
+	var divisibleAsset = require('intervaluecore/divisible_asset.js');
+	var walletGeneral = require('intervaluecore/wallet_general.js');
 	
 	divisibleAsset.composeAndSaveDivisibleAssetPaymentJoint({
 		asset: 'gRUW3CkKYA9LNf2/gX4bnDdnDZyPY9TAd9wIATzXSwE=', 
