@@ -8,26 +8,26 @@
 
 "use strict";
 var headlessWallet = require('../start.js');
-var conf = require('intervaluecore/conf.js');
-var eventBus = require('intervaluecore/event_bus.js');
-var db = require('intervaluecore/db.js');
-var mutex = require('intervaluecore/mutex.js');
-var storage = require('intervaluecore/storage.js');
-var constants = require('intervaluecore/constants.js');
-var validationUtils = require("intervaluecore/validation_utils.js");
+var conf = require('intervlauecore-1.0-testnet/conf.js');
+var eventBus = require('intervlauecore-1.0-testnet/event_bus.js');
+var db = require('intervlauecore-1.0-testnet/db.js');
+var mutex = require('intervlauecore-1.0-testnet/mutex.js');
+var storage = require('intervlauecore-1.0-testnet/storage.js');
+var constants = require('intervlauecore-1.0-testnet/constants.js');
+var validationUtils = require("intervlauecore-1.0-testnet/validation_utils.js");
 var wallet_id;
 
 if (conf.bSingleAddress)
 	throw Error('can`t run in single address mode');
 
 function initRPC() {
-	var composer = require('intervaluecore/composer.js');
-	var network = require('intervaluecore/network.js');
+	var composer = require('intervlauecore-1.0-testnet/composer.js');
+	var network = require('intervlauecore-1.0-testnet/network.js');
 
 	var rpc = require('json-rpc2');
-	var walletDefinedByKeys = require('intervaluecore/wallet_defined_by_keys.js');
-	var Wallet = require('intervaluecore/wallet.js');
-	var balances = require('intervaluecore/balances.js');
+	var walletDefinedByKeys = require('intervlauecore-1.0-testnet/wallet_defined_by_keys.js');
+	var Wallet = require('intervlauecore-1.0-testnet/wallet.js');
+	var balances = require('intervlauecore-1.0-testnet/balances.js');
 
 	var server = rpc.Server.$create({
 		'websocket': true, // is true by default 

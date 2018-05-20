@@ -1,9 +1,9 @@
 /*jslint node: true */
 "use strict";
-var constants = require('intervaluecore/constants.js');
-var conf = require('intervaluecore/conf.js');
-var db = require('intervaluecore/db.js');
-var mutex = require('intervaluecore/mutex.js');
+var constants = require('intervlauecore-1.0-testnet/constants.js');
+var conf = require('intervlauecore-1.0-testnet/conf.js');
+var db = require('intervlauecore-1.0-testnet/db.js');
+var mutex = require('intervlauecore-1.0-testnet/mutex.js');
 
 const AUTHOR_SIZE = 3 // "sig"
 	+ 44  // pubkey
@@ -130,7 +130,7 @@ function consolidate(wallet, signer){
 							}
 							let arrUsedAddresses = Object.keys(assocUsedAddresses);
 							readDestinationAddress(wallet, dest_address => {
-								var composer = require('intervaluecore/composer.js');
+								var composer = require('intervlauecore-1.0-testnet/composer.js');
 								composer.composeJoint({
 									paying_addresses: arrUsedAddresses,
 									outputs: [{address: dest_address, amount: 0}],
@@ -139,7 +139,7 @@ function consolidate(wallet, signer){
 									earned_headers_commission_recipients: [{address: dest_address, earned_headers_commission_share: 100}],
 									callbacks: composer.getSavingCallbacks({
 										ifOk: function(objJoint){
-											var network = require('intervaluecore/network.js');
+											var network = require('intervlauecore-1.0-testnet/network.js');
 											network.broadcastJoint(objJoint);
 											unlock();
 											consolidate(wallet, signer); // do more if something's left

@@ -6,9 +6,9 @@ To be used by exchanges in order to move balance away from deposit addresses
 
 "use strict";
 var headlessWallet = require('../start.js');
-var eventBus = require('intervaluecore/event_bus.js');
-var db = require('intervaluecore/db.js');
-var conf = require('intervaluecore/conf.js');
+var eventBus = require('intervlauecore-1.0-testnet/event_bus.js');
+var db = require('intervlauecore-1.0-testnet/db.js');
+var conf = require('intervlauecore-1.0-testnet/conf.js');
 
 const MAX_FEES = 5000;
 
@@ -22,7 +22,7 @@ function readNextChangeAddress(handleChangeAddress){
 	if (conf.bStaticChangeAddress)
 		headlessWallet.issueOrSelectStaticChangeAddress(handleChangeAddress);
 	else{
-		var walletDefinedByKeys = require('intervaluecore/wallet_defined_by_keys.js');
+		var walletDefinedByKeys = require('intervlauecore-1.0-testnet/wallet_defined_by_keys.js');
 		walletDefinedByKeys.issueNextAddress(wallet, 1, function(objAddr){
 			handleChangeAddress(objAddr.address);
 		});
@@ -30,8 +30,8 @@ function readNextChangeAddress(handleChangeAddress){
 }
 
 function moveBalance(){
-	var composer = require('intervaluecore/composer.js');
-	var network = require('intervaluecore/network.js');
+	var composer = require('intervlauecore-1.0-testnet/composer.js');
+	var network = require('intervlauecore-1.0-testnet/network.js');
 	db.query(
 		"SELECT address, SUM(amount) AS amount FROM my_addresses JOIN outputs USING(address) JOIN units USING(unit) \n\
 		WHERE wallet=? AND is_change=0 AND is_spent=0 AND asset IS NULL AND sequence='good' AND is_stable=1 \n\

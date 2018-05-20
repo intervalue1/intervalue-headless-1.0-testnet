@@ -1,12 +1,12 @@
 /*jslint node: true */
 "use strict";
 var headlessWallet = require('../start.js');
-var eventBus = require('intervaluecore/event_bus.js');
+var eventBus = require('intervlauecore-1.0-testnet/event_bus.js');
 
 
 function claimBack(){
 	headlessWallet.readFirstAddress(address => {
-		var Wallet = require('intervaluecore/wallet.js');
+		var Wallet = require('intervlauecore-1.0-testnet/wallet.js');
 		Wallet.claimBackOldTextcoins(address, 7);
 	});
 }

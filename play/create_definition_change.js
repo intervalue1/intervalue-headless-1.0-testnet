@@ -1,16 +1,16 @@
 /*jslint node: true */
 "use strict";
 var headlessWallet = require('../start.js');
-var eventBus = require('intervaluecore/event_bus.js');
-var objectHash = require('intervaluecore/object_hash.js');
+var eventBus = require('intervlauecore-1.0-testnet/event_bus.js');
+var objectHash = require('intervlauecore-1.0-testnet/object_hash.js');
 
 function onError(err){
 	throw Error(err);
 }
 
 function createDefinitionChange(){
-	var composer = require('intervaluecore/composer.js');
-	var network = require('intervaluecore/network.js');
+	var composer = require('intervlauecore-1.0-testnet/composer.js');
+	var network = require('intervlauecore-1.0-testnet/network.js');
 	var callbacks = composer.getSavingCallbacks({
 		ifNotEnoughFunds: onError,
 		ifError: onError,
